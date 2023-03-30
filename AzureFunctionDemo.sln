@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubMonitorApp", "GitHubMonitorApp\GitHubMonitorApp.csproj", "{52523312-6680-4117-AC94-AF577DD457B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitHubMonitorApp", "GitHubMonitorApp\GitHubMonitorApp.csproj", "{52523312-6680-4117-AC94-AF577DD457B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHubMonitor", "GitHubMonitor", "{D0F79ABF-9638-496F-9CCA-5AC38DC7E08D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureFunctionWeb", "AzureFunctionWeb", "{A8259DD3-E5B0-4707-992D-FE471EAEFFEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunctionWeb", "AzureFunctionWeb\AzureFunctionWeb.csproj", "{C649F775-7985-468B-9FFA-7F7B59243412}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +21,17 @@ Global
 		{52523312-6680-4117-AC94-AF577DD457B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52523312-6680-4117-AC94-AF577DD457B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52523312-6680-4117-AC94-AF577DD457B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C649F775-7985-468B-9FFA-7F7B59243412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C649F775-7985-468B-9FFA-7F7B59243412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C649F775-7985-468B-9FFA-7F7B59243412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C649F775-7985-468B-9FFA-7F7B59243412}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{52523312-6680-4117-AC94-AF577DD457B5} = {D0F79ABF-9638-496F-9CCA-5AC38DC7E08D}
+		{C649F775-7985-468B-9FFA-7F7B59243412} = {A8259DD3-E5B0-4707-992D-FE471EAEFFEA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F746DCDC-530E-4D28-992D-A4BDFC86B294}
