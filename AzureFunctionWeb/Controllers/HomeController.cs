@@ -1,4 +1,6 @@
-﻿using AzureFunctionWeb.Models;
+﻿using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using AzureFunctionWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Text;
@@ -10,19 +12,24 @@ namespace AzureFunctionWeb.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly HttpClient _httpClient;
-        public HomeController(ILogger<HomeController> logger)
+        private readonly BlobServiceClient _blobServiceClient;
+
+        public HomeController(ILogger<HomeController> logger,
+            BlobServiceClient blobServiceClient)
         {
             _logger = logger;
             _httpClient = new HttpClient();
+            _blobServiceClient = blobServiceClient;
+
         }
 
         public IActionResult Index()
         {
             return View();
         }
-        
+
         [HttpPost]
-        public async Task<IActionResult> Index(SalesRequest salesRequest)
+        public async Task<IActionResult> Index(SalesRequest salesRequest, IFormFile file)
         {
             salesRequest.Id = Guid.NewGuid().ToString();
             var salesRequestJson = JsonSerializer.Serialize(salesRequest);
@@ -33,6 +40,22 @@ namespace AzureFunctionWeb.Controllers
                 HttpResponseMessage response = await _httpClient.PostAsync("http://localhost:7058/api/OnSalesUploadWriteToQueue", content);
                 string returnValue = await response.Content.ReadAsStringAsync();
             }
+
+            if (file is not null)
+            {
+                var fileName = salesRequest.Id + Path.GetExtension(file.FileName);
+                BlobContainerClient containerClient = _blobServiceClient.GetBlobContainerClient("functionsalesrep");
+                var blobClient = containerClient.GetBlobClient(fileName);
+
+                var blobHttpHeader = new BlobHttpHeaders
+                {
+                    ContentType = file.ContentType
+                };
+
+                await blobClient.UploadAsync(file.OpenReadStream(), blobHttpHeader);
+                return View();
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

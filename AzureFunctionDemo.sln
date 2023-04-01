@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureFunctionWeb", "AzureFu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionWeb", "AzureFunctionWeb\AzureFunctionWeb.csproj", "{C649F775-7985-468B-9FFA-7F7B59243412}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuncApp", "Functions\FuncApp\FuncApp.csproj", "{A002C772-F097-4A02-8B4A-6D1126EEAF0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuncApp", "Functions\FuncApp\FuncApp.csproj", "{A002C772-F097-4A02-8B4A-6D1126EEAF0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
